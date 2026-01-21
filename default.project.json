@@ -1,0 +1,35 @@
+{
+	"name": "syn_defaults-plugin",
+	"globIgnorePaths": [
+		"**/package.json",
+		"**/tsconfig.json",
+		"**/*.project.json"
+	],
+	"tree": {
+		"$className": "DataModel",
+
+		"ReplicatedStorage": {
+			"Plugin": {
+				"$path": "out",
+
+				"rbxts_include": {
+					"$path": "include",
+
+					"node_modules": {
+						"$className": "Folder",
+
+						"@rbxts": { 
+							"$path": "node_modules/@rbxts"
+						},
+						"@flamework": {
+							"$path": "node_modules/@flamework"
+						},
+						"@rbxts-js": {
+							"$path": "node_modules/@rbxts-js"
+						}
+					}
+				}
+			}
+		}
+	}
+}
