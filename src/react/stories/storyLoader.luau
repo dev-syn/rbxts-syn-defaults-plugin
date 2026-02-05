@@ -12,14 +12,19 @@ end
 
 return function(moduleName: string)
 	local ReplicatedStorage = game:GetService("ReplicatedStorage");
+	local includeFolder = ReplicatedStorage:WaitForChild("rbxts_include");
+	local runtimeLib = require(includeFolder:WaitForChild("RuntimeLib") :: ModuleScript);
+
 	local Plugin = ReplicatedStorage:WaitForChild("Plugin");
-	local includeFolder = Plugin:WaitForChild("rbxts_include");
-	local runtimeLib = require(includeFolder:WaitForChild("RuntimeLib"));
 
 	-- Search in stories first but fallback to the components dir
-	local target = findModule(Plugin.react.stories,moduleName) or findModule(Plugin.react.components,moduleName);
+	local target =
+		findModule(Plugin.react.stories,moduleName) or
+		findModule(Plugin.react.components,moduleName);
+
 	if not target then warn("\{storyloader\} could not find module: '`{moduleName}.preview`'"); end
 	
+	-- Inject target ModuleScript into the _G table which will point to the RuntimeLib 
 	_G[target] = runtimeLib;
 	return require(target);
 end

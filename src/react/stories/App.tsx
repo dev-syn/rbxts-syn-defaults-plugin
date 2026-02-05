@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useState } from '@rbxts/react';
-import { APP_MIN_HEIGHT, APP_MIN_WIDTH } from '../../constants';
+import React from '@rbxts/react';
 
 export function App() {
 	return (

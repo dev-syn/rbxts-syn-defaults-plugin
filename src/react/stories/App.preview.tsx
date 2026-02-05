@@ -1,16 +1,16 @@
 import React from '@rbxts/react';
 import ReactRoblox from '@rbxts/react-roblox';
+import { CreateReactStory } from '@rbxts/ui-labs';
 import { App } from './App';
-import { InferProps } from '@rbxts/ui-labs';
 
-const story = {
+const controls = {};
+
+const story = CreateReactStory({
 	react: React,
 	reactRoblox: ReactRoblox,
-	controls: [],
-	story: (props: InferProps<{}>) => {
-		const comp = <App/>;
-		return comp;
-	}
-}
+	controls: controls
+},(props) => {
+	return (<App/>);
+});
 
 export = story;

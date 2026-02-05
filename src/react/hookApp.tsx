@@ -1,4 +1,4 @@
-// Must be imported first
+// ! Must be imported first
 import { App } from './stories/App';
 
 import React, { StrictMode } from "@rbxts/react";
