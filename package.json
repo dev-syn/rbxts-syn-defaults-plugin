@@ -4,14 +4,18 @@
   "main": "out/init.server.luau",
   "license": "MIT",
   "scripts": {
-    "build": "rbxtsc --type game",
-    "watch": "rbxtsc -w --type game"
+    "build": "npx rbxtsc",
+    "watch": "npx rbxtsc -w",
+
+		"dev": "npx rbxtsc && rojo serve serve.project.json",
+
+		"build:local": "npm run build && rojo build default.project.json --plugin syn_defaults_plugin.rbxm",
+		"build:rbxm": "npm run build && rojo build default.project.json --output ./plugin.rbxm"
   },
   "devDependencies": {
     "@rbxts/compiler-types": "^3.0.0-types.0",
     "@rbxts/syn-defaults": "S:\\MyDev\\_Projects\\roblox\\react\\.grouped\\rbxts\\syn_defaults",
     "@rbxts/types": "^1.0.902",
-    "rbxts-transform-debug": "^2.2.0",
     "rbxts-transformer-flamework": "^1.3.2",
     "roblox-ts": "^3.0.0",
     "typescript": "=5.5.3"
