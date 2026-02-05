@@ -16,6 +16,7 @@ const dockWidget = plugin.CreateDockWidgetPluginGuiAsync(
 		APP_MIN_HEIGHT // minHeight
 	)
 );
+// * Give our dockWidget to the app
 hookApp(dockWidget);
 
 button.Click.Connect(() => {
