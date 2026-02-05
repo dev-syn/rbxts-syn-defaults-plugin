@@ -1,0 +1,17 @@
+{
+	"name": "syn_defaults_plugin-dev",
+	"servePort": 34874,
+	"globIgnorePaths": [
+		"**/package.json",
+		"**/tsconfig.json",
+		"**/tests/test.project.json"
+	],
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+
+			"Plugin": { "$path": "./default.project.json" }
+		}
+	}
+}
