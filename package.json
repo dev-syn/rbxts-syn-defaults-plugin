@@ -5,9 +5,9 @@
   "license": "MIT",
   "scripts": {
     "build": "npx rbxtsc",
+		"build:d": "npx rbxtsc --rojo serve.project.json --type game",
     "watch": "npx rbxtsc -w",
-
-		"dev": "npx rbxtsc && rojo serve serve.project.json",
+		"watch:d": "npx rbxtsc --rojo serve.project.json --type game -w",
 
 		"build:local": "npm run build && rojo build default.project.json --plugin syn_defaults_plugin.rbxm",
 		"build:rbxm": "npm run build && rojo build default.project.json --output ./plugin.rbxm"
