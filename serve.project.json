@@ -1,6 +1,6 @@
 {
-	"name": "syn_defaults_plugin-dev",
-	"servePort": 34874,
+	"name": "syn_defaults-dev",
+	"servePort": 34875,
 	"globIgnorePaths": [
 		"**/package.json",
 		"**/tsconfig.json",
@@ -11,7 +11,25 @@
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
 
-			"Plugin": { "$path": "./default.project.json" }
+			"rbxts_include": {
+				"$path": "include",
+
+				"node_modules": {
+					"$className": "Folder",
+
+					"@rbxts": { 
+						"$path": "node_modules/@rbxts"
+					},
+					"@rbxts-js": {
+						"$path": "node_modules/@rbxts-js"
+					},
+					"@flamework": {
+						"$path": "node_modules/@flamework"
+					}
+				}
+			},
+
+			"Plugin": { "$path": "out" }
 		}
 	}
 }

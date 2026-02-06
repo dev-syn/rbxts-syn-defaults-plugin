@@ -1,6 +1,6 @@
 {
 	"name": "syn_defaults_plugin",
-	"servePort": 34874,
+	"servePort": 34875,
 	"globIgnorePaths": [
 		"**/package.json",
 		"**/tsconfig.json",
@@ -9,7 +9,7 @@
 	"tree": {
 		"$path": "out",
 
-		"include": {
+		"rbxts_include": {
 			"$path": "include",
 
 			"node_modules": {
