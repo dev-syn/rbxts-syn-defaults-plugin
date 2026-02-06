@@ -1,5 +1,5 @@
 // ! Must be imported first
-import { App } from './stories/App';
+import { App } from './App';
 
 import React, { StrictMode } from "@rbxts/react";
 import { createPortal, createRoot } from "@rbxts/react-roblox";
