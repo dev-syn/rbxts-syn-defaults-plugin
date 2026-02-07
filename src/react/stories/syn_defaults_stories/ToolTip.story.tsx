@@ -1,9 +1,9 @@
 import React, { useBinding, useRef } from '@rbxts/react';
 import ReactRoblox from '@rbxts/react-roblox';
 import { Choose, ControlGroup, InferProps, Number, String } from '@rbxts/ui-labs';
-import { ToolTipPosition, useToolTip } from '../hooks/useToolTip';
-import { ToolTipDisplay } from '../components/ToolTipDisplay';
-import { ToolTipPortal } from '../portals/ToolTipPortal';
+import { ToolTipPosition, useToolTip } from '@rbxts/syn-defaults/hooks/useToolTip';
+import { ToolTipDisplay } from '@rbxts/syn-defaults/components/ToolTipDisplay';
+import { ToolTipPortal } from '@rbxts/syn-defaults/portals/ToolTipPortal';
 
 const controls = {
 	Anchor: ControlGroup({
