@@ -21,7 +21,14 @@
 		"types": ["types/plugin"],
 		"rootDir": "src",
 		"outDir": "out",
-		"baseUrl": "src",
+		"baseUrl": ".",
+
+		"paths": {
+      "@rbxts/react": ["node_modules/@rbxts/react"],
+      "@rbxts/react-roblox": ["node_modules/@rbxts/react-roblox"],
+      "@rbxts/syn-defaults": ["node_modules/@rbxts/syn-defaults/src/index"],
+      "@rbxts/syn-defaults/*": ["node_modules/@rbxts/syn-defaults/src/*"]
+		},
 
 		"incremental": true,
 		"tsBuildInfoFile": "out/tsconfig.tsbuildinfo",
