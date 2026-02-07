@@ -1,4 +1,4 @@
-import React, { useBinding, useRef } from '@rbxts/react';
+import React, { useRef } from '@rbxts/react';
 import ReactRoblox from '@rbxts/react-roblox';
 import { Choose, ControlGroup, InferProps, Number, String } from '@rbxts/ui-labs';
 import { ToolTipPosition, useToolTip } from '@rbxts/syn-defaults/hooks/useToolTip';
@@ -46,7 +46,6 @@ const story = {
 			richText: false
 		};
 
-		print(`Given Positioning Mode: ${props.controls.PositioningMode}`);
 		// * Use tooltip hook
 		const ctrlAnchor = props.controls.Anchor;
 		const btnToolTip = useToolTip(
@@ -61,7 +60,12 @@ const story = {
 		);
 
 		return (
-			<>
+			<frame
+			key="StoryContainer"
+			Size={UDim2.fromScale(1,1)}
+			BackgroundTransparency={1}
+			BorderSizePixel={0}
+			>
 				<textbutton
 					ref={testBtnRef}
 					Text="A test button"
@@ -72,17 +76,18 @@ const story = {
 					Position={UDim2.fromScale(0.5,0.5)}
 				></textbutton>
 
-				{ btnToolTip ? (
+				{ btnToolTip && (
 					<ToolTipPortal>
 						<ToolTipDisplay
 							data={btnToolTip}
 							calculateContentProps={calculateProps}
 						/>
 					</ToolTipPortal>
-					): (<></>)
+					)
 				}
-			</>
+			</frame>	
 		);
 	}
 };
+
 export = story
