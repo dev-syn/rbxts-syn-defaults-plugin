@@ -1,5 +1,5 @@
 {
-	"name": "syn_defaults-dev",
+	"name": "syn_defaults_plugin-dev",
 	"servePort": 34875,
 	"globIgnorePaths": [
 		"**/package.json",
