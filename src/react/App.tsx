@@ -1,5 +1,5 @@
 import React from '@rbxts/react';
-import { CloseBtn } from '@rbxts/syn-defaults/out/components/CloseBtn';
+import { CloseBtn } from '@rbxts/syn-defaults/components/CloseBtn';
 
 export function App() {
 	return (
