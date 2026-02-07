@@ -20,5 +20,6 @@ const dockWidget = plugin.CreateDockWidgetPluginGuiAsync(
 hookApp(dockWidget);
 
 button.Click.Connect(() => {
+	dockWidget.Enabled = !dockWidget.Enabled;
 	print("Button clicked!");
 });
