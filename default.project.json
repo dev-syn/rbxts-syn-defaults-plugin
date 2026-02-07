@@ -4,7 +4,8 @@
 	"globIgnorePaths": [
 		"**/package.json",
 		"**/tsconfig.json",
-		"**/tests"
+		"**/tests",
+		"**/stories"
 	],
 	"tree": {
 		"$path": "out",
