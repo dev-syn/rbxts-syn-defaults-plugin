@@ -26,7 +26,7 @@
 		"paths": {
       "@rbxts/react": ["node_modules/@rbxts/react"],
       "@rbxts/react-roblox": ["node_modules/@rbxts/react-roblox"],
-      "@rbxts/syn-defaults": ["node_modules/@rbxts/syn-defaults/out/index"],
+      "@rbxts/syn-defaults": ["node_modules/@rbxts/syn-defaults/out/"],
       "@rbxts/syn-defaults/*": ["node_modules/@rbxts/syn-defaults/out/*"]
 		},
 
