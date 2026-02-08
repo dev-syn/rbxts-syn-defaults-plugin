@@ -2,9 +2,11 @@ import React from '@rbxts/react';
 import ReactRoblox from '@rbxts/react-roblox';
 
 import { CreateReactStory } from '@rbxts/ui-labs';
-import { ContextMenuTrigger } from '@rbxts/syn-defaults/components/ContextMenuTrigger';
-import { ContextMenu } from '@rbxts/syn-defaults/components/ContextMenu';
-import { ContextMenuItem } from '@rbxts/syn-defaults/components/ContextMenuItem';
+import { ContextMenuTrigger } from '@rbxts/syn-defaults/components/context_menu/ContextMenuTrigger';
+import { ContextMenu } from '@rbxts/syn-defaults/components/context_menu/ContextMenu';
+import { ContextMenuItem } from '@rbxts/syn-defaults/components/context_menu/ContextMenuItem';
+
+import { center } from '@rbxts/syn-defaults/helpers/utlilities';
 
 const controls = {};
 
@@ -26,6 +28,7 @@ const story = CreateReactStory({
 				menuId={CONTEXT_MENU_ID}
 				Text="Right-click me to open the context menu."
 				LayoutOrder={4}
+				{...center}
 				Size={UDim2.fromScale(0.3,0.25)}
 			/>
 			<ContextMenu
