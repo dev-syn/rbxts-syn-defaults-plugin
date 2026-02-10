@@ -3,7 +3,6 @@ import ReactRoblox from '@rbxts/react-roblox';
 import { CreateReactStory } from '@rbxts/ui-labs';
 
 import { DropdownTrigger } from '@rbxts/syn-defaults/components/dropdown/DropdownTrigger';
-import { DropdownMenu } from '@rbxts/syn-defaults/components/dropdown/DropdownMenu'; 
 
 const controls = {};
 
@@ -14,12 +13,22 @@ const story = CreateReactStory({
 },(props) => {
 	return (
 		<DropdownTrigger
-			btnProps={{
-				
+			instProps={{
+				AnchorPoint: new Vector2(0.5,0),
+				Position: UDim2.fromScale(0.5,0),
+				Size: UDim2.fromScale(0.5,0.1)
 			}}
-		>
-
-		</DropdownTrigger>
+			menuId='ui_labs_dropdown'
+			choices={[
+				"Choice_Alpha",
+				"Choice_Bravo",
+				"Choice_Charlie",
+				"Choice_Delta",
+				"Choice_Echo",
+				"Choice_Foxtrot"
+			]}
+			_default={3}
+		/>
 	);
 });
 export = story;
