@@ -2,7 +2,7 @@ import React from '@rbxts/react';
 import ReactRoblox from '@rbxts/react-roblox';
 import { CreateReactStory } from '@rbxts/ui-labs';
 
-import { DropdownTrigger } from '@rbxts/syn-defaults/components/dropdown/DropdownTrigger';
+import { Dropdown } from '@rbxts/syn-defaults/components/Dropdown';
 
 const controls = {};
 
@@ -12,7 +12,7 @@ const story = CreateReactStory({
 	controls: controls,
 },(props) => {
 	return (
-		<DropdownTrigger
+		<Dropdown
 			instProps={{
 				AnchorPoint: new Vector2(0.5,0),
 				Position: UDim2.fromScale(0.5,0),
@@ -28,6 +28,11 @@ const story = CreateReactStory({
 				"Choice_Foxtrot"
 			]}
 			_default={3}
+			
+			menuOptions={{
+				rowHeight: 30,
+				padding: 4
+			}}
 		/>
 	);
 });
