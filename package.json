@@ -10,7 +10,8 @@
 		"watch:d": "npx rbxtsc --rojo serve.project.json --type game -w",
 
 		"build:local": "npm run build && rojo build default.project.json --plugin syn_defaults_plugin.rbxm",
-		"build:rbxm": "npm run build && rojo build default.project.json --output ./plugin.rbxm"
+		"build:rbxm": "npm run build && rojo build default.project.json --output ./plugin.rbxm",
+		"build:test": "npm run build:d && rojo serve serve.project.json"
   },
   "devDependencies": {
     "@rbxts/compiler-types": "^3.0.0-types.0",
