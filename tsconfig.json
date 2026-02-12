@@ -5,7 +5,7 @@
 		"downlevelIteration": true,
 		"jsx": "react",
 		"jsxFactory": "React.createElement",
-		"jsxFragmentFactory": "React.createFragment",
+		"jsxFragmentFactory": "React.Fragment",
 		"module": "commonjs",
 		"moduleResolution": "Node",
 		"noLib": true,
@@ -26,7 +26,7 @@
 		"paths": {
       "@rbxts/react": ["node_modules/@rbxts/react"],
       "@rbxts/react-roblox": ["node_modules/@rbxts/react-roblox"],
-      "@rbxts/syn-defaults": ["node_modules/@rbxts/syn-defaults/out/"],
+      "@rbxts/syn-defaults": ["node_modules/@rbxts/syn-defaults/out/init.luau"],
       "@rbxts/syn-defaults/*": ["node_modules/@rbxts/syn-defaults/out/*"]
 		},
 
