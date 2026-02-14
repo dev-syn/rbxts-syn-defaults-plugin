@@ -10,7 +10,7 @@ export function App() {
 	<frame
 		{ ...base.surface }
 		AnchorPoint={new Vector2(0.5,0.5)}
-		Size={UDim2.fromOffset(450,700)}
+		Size={UDim2.fromOffset(500,350)}
 		Position={UDim2.fromScale(0.5,0.5)}
 	>
 		<CloseBtn
