@@ -1,23 +1,20 @@
 import React, { useEffect, useMemo, useState } from '@rbxts/react';
 import ReactRoblox from '@rbxts/react-roblox';
-import { Boolean, CreateReactStory, RGBA, Slider, String } from '@rbxts/ui-labs';
+import { CreateReactStory, RGBA, Slider, String } from '@rbxts/ui-labs';
 
-import { DEFAULT_ELEMENT_COLOR } from '@rbxts/syn-defaults/constants';
-
-import { CloseBtn } from '@rbxts/syn-defaults/components/CloseBtn';
+import { BaseTheme, CloseBtn } from '@rbxts/syn-defaults';
 
 const controls = {
 	Content: String("rbxassetid://14914804859"),
 	Size: Slider(0.3,0,1,0.1),
 	ButtonColor: RGBA(
-		Color3.fromRGB(215,0,0),
+		BaseTheme.colors.state.err,
 		0
 	),
 	BackgroundColor: RGBA(
-		DEFAULT_ELEMENT_COLOR,
+		BaseTheme.colors.surface.main,
 		0
-	),
-	IsClosed: Boolean(false)
+	)
 };
 
 const story = CreateReactStory({
@@ -31,27 +28,14 @@ const story = CreateReactStory({
 		return new UDim2(values.Size,0,values.Size,0);
 	},[values.Size]);
 
-	const [localClosed, setLocalClosed] = useState(props.controls.IsClosed);
-
-	useEffect(() => {
-		setLocalClosed(props.controls.IsClosed);
-	},[props.controls.IsClosed]);
-
 	return (
-		<>
-		{!localClosed && 
-			<CloseBtn
-				_initClosed={props.controls.IsClosed}
-
-				btnContent={props.controls.Content}
-				size={buttonSize}
-				btnColor={props.controls.ButtonColor.Color}
-				bgColor={props.controls.BackgroundColor.Color}
-
-				onClose={() => setLocalClosed(true)}
-			/>
-		}
-		</>
+		<CloseBtn
+			contentImg={props.controls.Content}
+			size={buttonSize}
+			imgColor={props.controls.ButtonColor.Color}
+			bgColor={props.controls.BackgroundColor.Color}
+			onClose={() => print("Close button pressed.")}
+		/>
 	);
 });
 export = story;
