@@ -2,7 +2,6 @@ import React from '@rbxts/react';
 import ReactRoblox from '@rbxts/react-roblox';
 
 import { CreateReactStory } from '@rbxts/ui-labs';
-import { ContextMenuTrigger } from '@rbxts/syn-defaults/components/context_menu/ContextMenuTrigger';
 import { ContextMenu } from '@rbxts/syn-defaults/components/context_menu/ContextMenu';
 import { ContextMenuItem } from '@rbxts/syn-defaults/components/context_menu/ContextMenuItem';
 
@@ -19,27 +18,23 @@ const story = CreateReactStory({
 },(props) => {
 	return (
 		<frame
-			key="StoryContainer"
+			key="Container-Story"
 			Size={UDim2.fromScale(1,1)}
 			BackgroundTransparency={1}
 			BorderSizePixel={0}
-			>
-			<ContextMenuTrigger
-				menuId={CONTEXT_MENU_ID}
-				Text="Right-click me to open the context menu."
-				LayoutOrder={4}
-				{...center}
-				Size={UDim2.fromScale(0.3,0.25)}
-			/>
+		>
 			<ContextMenu
 				menuId={CONTEXT_MENU_ID}
-				config={{
+				btnOptions={{
+					btnType: "textbutton", size: new UDim2(0,400,0,100), content: "Lorem ipsum dolor sit"
+				}}
+				menuOptions={{
 					fullyVisibleOnly: true
 				}}
 			>
 				<ContextMenuItem
 					id='item_1'
-					text="Sample 1"
+					content="Sample 1"
 					onActivate={() => {
 						print(`Inside item_1`);
 					}}
@@ -47,7 +42,7 @@ const story = CreateReactStory({
 			
 				<ContextMenuItem
 					id='item_2'
-					text="Sample 2"
+					content="Sample 2"
 					onActivate={() => {
 						print(`Inside item_2`);
 					}}
@@ -55,7 +50,7 @@ const story = CreateReactStory({
 
 				<ContextMenuItem
 					id='item_3'
-					text="Sample 3"
+					content="Sample 3"
 					onActivate={() => {
 						print(`Inside item_3`);
 					}}
