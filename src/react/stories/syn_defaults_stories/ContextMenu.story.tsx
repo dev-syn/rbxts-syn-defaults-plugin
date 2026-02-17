@@ -5,7 +5,7 @@ import { CreateReactStory } from '@rbxts/ui-labs';
 import { ContextMenu } from '@rbxts/syn-defaults/components/context_menu/ContextMenu';
 import { ContextMenuItem } from '@rbxts/syn-defaults/components/context_menu/ContextMenuItem';
 
-import { center } from '@rbxts/syn-defaults/helpers/utlilities';
+import { StoryWrapper } from '@rbxts/syn-defaults/index';
 
 const controls = {};
 
@@ -17,16 +17,11 @@ const story = CreateReactStory({
 	controls: controls
 },(props) => {
 	return (
-		<frame
-			key="Container-Story"
-			Size={UDim2.fromScale(1,1)}
-			BackgroundTransparency={1}
-			BorderSizePixel={0}
-		>
+		<StoryWrapper>
 			<ContextMenu
 				menuId={CONTEXT_MENU_ID}
 				btnOptions={{
-					btnType: "textbutton", size: new UDim2(0,400,0,100), content: "Lorem ipsum dolor sit"
+					btnType: "textbutton", size: new UDim2(0,200,0,75), content: "Lorem ipsum dolor sit"
 				}}
 				menuOptions={{
 					fullyVisibleOnly: true
@@ -56,7 +51,7 @@ const story = CreateReactStory({
 					}}
 				/>
 			</ContextMenu>
-		</frame>
+		</StoryWrapper>
 	);
 });
 export = story;
