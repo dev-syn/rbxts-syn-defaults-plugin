@@ -5,17 +5,15 @@
   "license": "MIT",
   "scripts": {
     "build": "npx rbxtsc",
-		"build:d": "npx rbxtsc --rojo serve.project.json --type game",
+    "build:d": "npx rbxtsc --rojo serve.project.json --type game",
     "watch": "npx rbxtsc -w",
-		"watch:d": "npx rbxtsc --rojo serve.project.json --type game -w",
-
-		"build:local": "npm run build && rojo build default.project.json --plugin syn_defaults_plugin.rbxm",
-		"build:rbxm": "npm run build && rojo build default.project.json --output ./plugin.rbxm",
-		"build:test": "npm run build:d && rojo serve serve.project.json"
+    "watch:d": "npx rbxtsc --rojo serve.project.json --type game -w",
+    "build:local": "npm run build && rojo build default.project.json --plugin syn_defaults_plugin.rbxm",
+    "build:rbxm": "npm run build && rojo build default.project.json --output ./plugin.rbxm",
+    "build:test": "npm run build:d && rojo serve serve.project.json"
   },
   "devDependencies": {
     "@rbxts/compiler-types": "^3.0.0-types.0",
-    "@rbxts/syn-defaults": "S:\\MyDev\\_Projects\\roblox\\react\\.grouped\\rbxts\\syn_defaults",
     "@rbxts/types": "^1.0.902",
     "rbxts-transformer-flamework": "^1.3.2",
     "roblox-ts": "^3.0.0",
@@ -28,6 +26,7 @@
     "@rbxts/react": "^17.3.7-ts.1",
     "@rbxts/react-globals": "^17.3.7-ts.1",
     "@rbxts/react-roblox": "^17.3.7-ts.1",
+    "@rbxts/reverse-array": "^1.0.3",
     "@rbxts/ui-labs": "^2.4.2"
   }
 }
