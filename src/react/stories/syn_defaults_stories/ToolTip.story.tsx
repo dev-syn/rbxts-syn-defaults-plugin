@@ -1,9 +1,9 @@
-import React, { useRef } from '@rbxts/react';
+import React, { useMemo, useRef } from '@rbxts/react';
 import ReactRoblox from '@rbxts/react-roblox';
 import { Choose, ControlGroup, InferProps, Number, String } from '@rbxts/ui-labs';
 import { ToolTipPosition, useToolTip } from '@rbxts/syn-defaults/hooks/useToolTip';
-import { ToolTipDisplay } from '@rbxts/syn-defaults/components/ToolTipDisplay';
 import { ToolTipPortal } from '@rbxts/syn-defaults/portals/ToolTipPortal';
+import { center, FontProps, StoryWrapper, SynText, ToolTipDisplay, useBaseStyles, useTheme } from '@rbxts/syn-defaults';
 
 const controls = {
 	Anchor: ControlGroup({
@@ -26,7 +26,7 @@ const controls = {
 	}
 ),
 	PositioningMode: Choose(["TargetRelative","MouseBased"],1,true),
-	Text: String(
+	Content: String(
 		"Lorem ipsum dolor sit amet consectetur adipiscing elit. Sit amet consectetur adipiscing elit quisque faucibus ex. Adipiscing elit quisque faucibus ex sapien vitae pellentesque."
 	),
 	TextSize: Number(18,12,42,1,true,0.8),
@@ -39,19 +39,23 @@ const story = {
 	story: (props: InferProps<typeof controls>) => {
 		const testBtnRef = useRef<TextButton>();
 
+		const theme = useTheme();
+		print(`Theme: ${theme}`)
+		const base = useBaseStyles();
+		
 		// * Some text properties that should be given to calculate tooltip size
-		const calculateProps = {
-			textSize: props.controls.TextSize,
-			font: Enum.Font.Gotham,
+		const calculateProps = useMemo(() =>({
+			font: theme.typography.mainFont ? theme.typography.mainFont : Font.fromEnum(theme.typography.legacy?.mainFont ?? Enum.Font.Roboto),
+			textSize: props.controls.TextSize ?? theme.typography.size.body,
 			richText: false
-		};
+		}),[ theme, props.controls]);
 
 		// * Use tooltip hook
 		const ctrlAnchor = props.controls.Anchor;
 		const btnToolTip = useToolTip(
 			testBtnRef,
 			{
-				content: props.controls.Text,
+				content: props.controls.Content,
 				delayMs: 0,
 				positioningMode: props.controls.PositioningMode as ToolTipPosition,
 				anchorPos: new Vector2(ctrlAnchor.X,ctrlAnchor.Y)
@@ -60,23 +64,24 @@ const story = {
 		);
 
 		return (
-			<frame
-			key="StoryContainer"
-			Size={UDim2.fromScale(1,1)}
-			BackgroundTransparency={1}
-			BorderSizePixel={0}
-			>
-				<textbutton
+			<StoryWrapper>
+				<SynText<"tb">
+					instType='tb'
 					ref={testBtnRef}
-					Text="A test button"
-					Size={UDim2.fromOffset(200,200)}
-					TextColor3={new Color3(1,1,1)}
-					BackgroundColor3={Color3.fromRGB(65,65,65)}
-					AnchorPoint={new Vector2(0.5,0.5)}
-					Position={UDim2.fromScale(0.5,0.5)}
-				></textbutton>
+					sizeVariant='body'
+					content={props.controls.Content}
 
-				{ btnToolTip && (
+					native={{
+						Size: new UDim2(0.3,0,0.2,0),
+						BackgroundColor3: theme.colors.background,
+						TextColor3: theme.colors.text.primary,
+						BorderSizePixel: 0,
+						...center
+					}}
+					
+				>
+					<uistroke {...base.border}/>
+					{ btnToolTip && (
 					<ToolTipPortal>
 						<ToolTipDisplay
 							data={btnToolTip}
@@ -85,7 +90,8 @@ const story = {
 					</ToolTipPortal>
 					)
 				}
-			</frame>	
+				</SynText>
+			</StoryWrapper>
 		);
 	}
 };
