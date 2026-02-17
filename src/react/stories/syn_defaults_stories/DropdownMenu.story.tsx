@@ -15,11 +15,6 @@ const story = CreateReactStory({
 	return (
 		<StoryWrapper>
 			<Dropdown
-				instProps={{
-					AnchorPoint: new Vector2(0.5,0),
-					Position: UDim2.fromScale(0.5,0),
-					Size: UDim2.fromScale(0.5,0.1)
-				}}
 				menuId='ui_labs_dropdown'
 				choices={[
 					"Choice_Alpha",
