@@ -1,9 +1,8 @@
-import React, { useMemo, useRef } from '@rbxts/react';
+import React, { useMemo } from '@rbxts/react';
 import ReactRoblox from '@rbxts/react-roblox';
 import { Choose, ControlGroup, InferProps, Number, String } from '@rbxts/ui-labs';
-import { ToolTipPosition, useToolTip } from '@rbxts/syn-defaults/hooks/useToolTip';
-import { ToolTipPortal } from '@rbxts/syn-defaults/portals/ToolTipPortal';
-import { center, FontProps, StoryWrapper, SynText, ToolTipDisplay, useBaseStyles, useTheme } from '@rbxts/syn-defaults';
+import { ToolTipConfig, ToolTipPosition } from '@rbxts/syn-defaults/hooks/useToolTip';
+import {StoryWrapper, ToolTipDisplay, useTheme } from '@rbxts/syn-defaults';
 
 const controls = {
 	Anchor: ControlGroup({
@@ -37,60 +36,37 @@ const story = {
 	reactRoblox: ReactRoblox,
 	controls: controls,
 	story: (props: InferProps<typeof controls>) => {
-		const testBtnRef = useRef<TextButton>();
-
 		const theme = useTheme();
-		print(`Theme: ${theme}`)
-		const base = useBaseStyles();
 		
+		// * Use tooltip hook
+		const _controls = props.controls;
+		const ctrlAnchor = _controls.Anchor;
+		const toolTipConfig = useMemo<ToolTipConfig>(() => ({
+			content: _controls.Content,
+			delayMs: 0,
+			positioningMode: _controls.PositioningMode as ToolTipPosition,
+			anchorPos: new Vector2(ctrlAnchor.X,ctrlAnchor.Y)
+		}),[ _controls ]);
+
 		// * Some text properties that should be given to calculate tooltip size
 		const calculateProps = useMemo(() =>({
 			font: theme.typography.mainFont ? theme.typography.mainFont : Font.fromEnum(theme.typography.legacy?.mainFont ?? Enum.Font.Roboto),
 			textSize: props.controls.TextSize ?? theme.typography.size.body,
 			richText: false
-		}),[ theme, props.controls]);
-
-		// * Use tooltip hook
-		const ctrlAnchor = props.controls.Anchor;
-		const btnToolTip = useToolTip(
-			testBtnRef,
-			{
-				content: props.controls.Content,
-				delayMs: 0,
-				positioningMode: props.controls.PositioningMode as ToolTipPosition,
-				anchorPos: new Vector2(ctrlAnchor.X,ctrlAnchor.Y)
-			},
-			calculateProps
-		);
+		}),[ theme, _controls ]);
 
 		return (
 			<StoryWrapper>
-				<SynText<"tb">
-					instType='tb'
-					ref={testBtnRef}
-					sizeVariant='body'
-					content={props.controls.Content}
-
-					native={{
-						Size: new UDim2(0.3,0,0.2,0),
-						BackgroundColor3: theme.colors.background,
-						TextColor3: theme.colors.text.primary,
-						BorderSizePixel: 0,
-						...center
+				<ToolTipDisplay
+					toolTipConfig={toolTipConfig}
+					calculateContentProps={calculateProps}
+					overrides={{
+						label: {},
+						trigger: {
+							Size: new UDim2(0,300,0,150)
+						}
 					}}
-					
-				>
-					<uistroke {...base.border}/>
-					{ btnToolTip && (
-					<ToolTipPortal>
-						<ToolTipDisplay
-							data={btnToolTip}
-							calculateContentProps={calculateProps}
-						/>
-					</ToolTipPortal>
-					)
-				}
-				</SynText>
+				/>
 			</StoryWrapper>
 		);
 	}
