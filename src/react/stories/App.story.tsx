@@ -3,9 +3,11 @@ import ReactRoblox from '@rbxts/react-roblox';
 import { CreateReactStory } from '@rbxts/ui-labs';
 import { App } from '../App';
 import { StoryWrapper } from '@rbxts/syn-defaults/helpers/StoryWrapper';
-import { CloseBtn } from '@rbxts/syn-defaults/components/CloseBtn';
+import { APP_MIN_HEIGHT, APP_MIN_WIDTH } from '../../constants';
 
-const controls = {};
+const controls = {
+
+};
 
 const story = CreateReactStory({
 	react: React,
