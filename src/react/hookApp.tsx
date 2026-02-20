@@ -8,7 +8,12 @@ export function hookApp(dockWidget: DockWidgetPluginGui) {
 	const root = createRoot(new Instance("Folder"));
 	root.render(
 		<StrictMode>
-			{createPortal(<App />, dockWidget)}
+			{createPortal(
+				<App
+					windowSize={UDim2.fromScale(1,1)}
+				/>,
+				dockWidget
+			)}
 		</StrictMode>
 	);
 	return root;
