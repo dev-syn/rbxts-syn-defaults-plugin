@@ -15,7 +15,9 @@ const dockWidget = plugin.CreateDockWidgetPluginGuiAsync(
 		APP_MIN_WIDTH, // minWidth
 		APP_MIN_HEIGHT // minHeight
 	)
-);
+) as DockWidgetPluginGui & { Title: string };
+dockWidget.Title = "syn_defaults";
+
 // * Give our dockWidget to the app
 hookApp(dockWidget);
 
