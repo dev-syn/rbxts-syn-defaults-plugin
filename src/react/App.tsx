@@ -37,7 +37,7 @@ export function App(config: AppConfig) {
 			<frame {...base.divider } Position={new UDim2(0.5,0,0,50)} ></frame>
 			<frame
 				BackgroundTransparency={0.5} // {...base.container}
-				Size={new UDim2(1,0,)}
+				Size={new UDim2(1,0,0,0)}
 			></frame>
 		</frame>
 	);
