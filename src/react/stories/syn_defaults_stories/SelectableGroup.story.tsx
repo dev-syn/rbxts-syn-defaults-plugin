@@ -126,21 +126,15 @@ const story = CreateReactStory({
 				<SelectableItem
 					id={"btn_A"}
 					btnType='TextButton'
-
-					Text={"Button A"}
 				/>
 				<SelectableItem
 					id={"btn_B"}
 					btnType='TextButton'
-
-					Text={"Button Big"}
 					btnSize={UDim2.fromScale(0.4,0.4)}
 				/>
 				<SelectableItem
 					id={"btn_C"}
 					btnType='TextButton'
-
-					Text={"Button C"}
 				/>
 			</SelectableGroup>
 		</StoryWrapper>
