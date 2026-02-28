@@ -21,7 +21,7 @@ const story = CreateReactStory({
 			<ContextMenu
 				menuId={CONTEXT_MENU_ID}
 				btnOptions={{
-					btnType: "textbutton", size: new UDim2(0,200,0,75), content: "Lorem ipsum dolor sit"
+					btnType: "textbutton", content: "Lorem ipsum dolor sit"
 				}}
 				menuOptions={{
 					fullyVisibleOnly: true
