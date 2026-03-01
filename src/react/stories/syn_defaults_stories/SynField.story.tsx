@@ -1,19 +1,27 @@
 import React from '@rbxts/react';
 import ReactRoblox from '@rbxts/react-roblox';
 import { StoryWrapper, SynField, SynFieldVariant } from '@rbxts/syn-defaults/index';
-import { CreateReactStory } from '@rbxts/ui-labs';
+import { Choose, CreateReactStory } from '@rbxts/ui-labs';
 
-const controls = {};
+const variants = ["Horizontal","Vertical"];
+type VariantType =  keyof typeof SynFieldVariant;
+
+const controls = {
+	Variant: Choose(variants,0,true)
+};
 
 const story = CreateReactStory({
 	react: React,
 	reactRoblox: ReactRoblox,
 	controls: controls
 },(props) => {
+	// Map the control string directly to the Enum value
+	const selectedVariant = SynFieldVariant[props.controls.Variant as VariantType];
+
 	return (
 		<StoryWrapper>
 			<SynField
-				variant={SynFieldVariant.Horizontal}
+				variant={selectedVariant}
 			></SynField>
 		</StoryWrapper>
 	)
