@@ -7,7 +7,7 @@ const variants = ["Horizontal","Vertical"];
 type VariantType =  keyof typeof SynFieldVariant;
 
 const controls = {
-	Variant: Choose(variants,0,true)
+	Variant: Choose(variants,1,true)
 };
 
 const story = CreateReactStory({
@@ -17,11 +17,11 @@ const story = CreateReactStory({
 },(props) => {
 	// Map the control string directly to the Enum value
 	const selectedVariant = SynFieldVariant[props.controls.Variant as VariantType];
-
 	return (
 		<StoryWrapper>
 			<SynField
 				variant={selectedVariant}
+				
 			></SynField>
 		</StoryWrapper>
 	)
