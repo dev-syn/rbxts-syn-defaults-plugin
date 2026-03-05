@@ -59,12 +59,7 @@ const story = {
 				<ToolTipDisplay
 					toolTipConfig={toolTipConfig}
 					calculateContentProps={calculateProps}
-					overrides={{
-						label: {},
-						trigger: {
-							Size: new UDim2(0,300,0,150)
-						}
-					}}
+					
 				/>
 			</StoryWrapper>
 		);
