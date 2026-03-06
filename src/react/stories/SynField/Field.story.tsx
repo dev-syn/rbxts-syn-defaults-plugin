@@ -11,8 +11,13 @@ type LayoutPositionVariant = keyof typeof SynFieldLayoutPosition;
 const layoutPositionVariants = deunify<LayoutPositionVariant>();
 
 const controls = {
-	TypeVariant: Choose(fieldVariants,1,true),
-	LayoutPosition: Choose(layoutPositionVariants,1,true),
+	TypeVariant: Choose(fieldVariants,1,false),
+	LayoutPosition: Choose(layoutPositionVariants,1,false),
+
+	Content: ControlGroup({
+		LabelContent: String("Label"),
+		FieldContent: String("Field Value.")
+	},1),
 
 	FieldSizeX: ControlGroup({
 		Scale: Number(
@@ -31,7 +36,7 @@ const controls = {
 			true, // dragger
 			0.7 // sens
 		)
-	}),
+	},2),
 	FieldSizeY: ControlGroup({
 		Scale: Number(
 			0, // default
@@ -49,10 +54,7 @@ const controls = {
 			true, // dragger
 			0.7 // sens
 		)
-	}),
-
-	LabelContent: String("Label"),
-	FieldContent: String("Field Value.")
+	},3)
 };
 
 const story = CreateReactStory({
@@ -63,9 +65,9 @@ const story = CreateReactStory({
 	// Map the control string directly to the Enum value
 	const selectedVariant = SynFieldVariant[props.controls.TypeVariant as FieldTypeVariant];
 	const selectedLayoutPosVariant = SynFieldLayoutPosition[props.controls.LayoutPosition as LayoutPositionVariant];
-
 	const fieldSizeX = props.controls.FieldSizeX;
 	const fieldSizeY = props.controls.FieldSizeY;
+	const content = props.controls.Content;
 
 	return (
 		<StoryWrapper>
@@ -78,8 +80,8 @@ const story = CreateReactStory({
 							layoutPos={selectedLayoutPosVariant}
 							size={new UDim2(fieldSizeX.Scale,fieldSizeX.Offset,fieldSizeY.Scale,fieldSizeY.Offset)}
 
-							labelContent=''
-							fieldContent=''
+							labelContent={content.LabelContent}
+							fieldContent={content.FieldContent}
 						></SynField>
 					);
 			default:
