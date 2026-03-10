@@ -4,14 +4,10 @@ import ReactRoblox from '@rbxts/react-roblox';
 import { StoryWrapper, SynField, SynFieldLayoutPosition, SynFieldVariant } from '@rbxts/syn-defaults/index';
 import { Choose, ControlGroup, CreateReactStory, Number, String } from '@rbxts/ui-labs';
 
-type FieldTypeVariant = keyof typeof SynFieldVariant;
-const fieldVariants = deunify<FieldTypeVariant>();
-
 type LayoutPositionVariant = keyof typeof SynFieldLayoutPosition;
 const layoutPositionVariants = deunify<LayoutPositionVariant>();
 
 const controls = {
-	TypeVariant: Choose(fieldVariants,1,false),
 	LayoutPosition: Choose(layoutPositionVariants,1,false),
 
 	Content: ControlGroup({
@@ -62,8 +58,6 @@ const story = CreateReactStory({
 	reactRoblox: ReactRoblox,
 	controls: controls
 },(props) => {
-	// Map the control string directly to the Enum value
-	const selectedVariant = SynFieldVariant[props.controls.TypeVariant as FieldTypeVariant];
 	const selectedLayoutPosVariant = SynFieldLayoutPosition[props.controls.LayoutPosition as LayoutPositionVariant];
 	const fieldSizeX = props.controls.FieldSizeX;
 	const fieldSizeY = props.controls.FieldSizeY;
@@ -71,23 +65,14 @@ const story = CreateReactStory({
 
 	return (
 		<StoryWrapper>
-		{(() => {
-			switch(selectedVariant) {
-				case SynFieldVariant.Field:
-					return (
-						<SynField
-							variant={selectedVariant}
-							layoutPos={selectedLayoutPosVariant}
-							size={new UDim2(fieldSizeX.Scale,fieldSizeX.Offset,fieldSizeY.Scale,fieldSizeY.Offset)}
+			<SynField
+				variant={SynFieldVariant.Field}
+				layoutPos={selectedLayoutPosVariant}
+				size={new UDim2(fieldSizeX.Scale,fieldSizeX.Offset,fieldSizeY.Scale,fieldSizeY.Offset)}
 
-							labelContent={content.LabelContent}
-							fieldContent={content.FieldContent}
-						></SynField>
-					);
-			default:
-				throw `{syn-defaults}: Only SynFieldVariant.Field has been implemented, more coming soon!`;
-			}
-		})()}
+				labelContent={content.LabelContent}
+				fieldContent={content.FieldContent}
+			></SynField>
 		</StoryWrapper>
 	)
 });
