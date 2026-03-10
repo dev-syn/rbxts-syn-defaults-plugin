@@ -11,14 +11,13 @@ export function App(config: AppConfig) {
 	const theme = useTheme();
 	
 	const base = useBaseStyles();
-	const text = useTextStyles();
 
-	const appHeaderProps = useMemo<React.InstanceProps<TextLabel>>(() => ({
+	const synTextNative = useMemo(() => ({ def: {
 		AnchorPoint: new Vector2(0.5,0),
 		Position: new UDim2(0.5,0,0,25),
 
 		TextColor3: theme.colors.text.primary
-	}),[ theme ]);
+	} }),[theme.colors.text.primary]);
 
 	return (
 		<frame
@@ -31,7 +30,7 @@ export function App(config: AppConfig) {
 				instType='tl'
 				sizeVariant='h2'
 				content='Syn Defaults'
-				native={appHeaderProps}
+				native={synTextNative}
 			>
 			</SynText>
 			<frame {...base.divider } Position={new UDim2(0.5,0,0,50)} ></frame>
