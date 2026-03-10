@@ -105,6 +105,7 @@ const story = CreateReactStory({
 	const xItemOffset = props.controls['GroupOptions.itemSize.X'].Offset;
 	const yItemScale = props.controls['GroupOptions.itemSize.Y'].Scale;
 	const yItemOffset = props.controls['GroupOptions.itemSize.Y'].Offset;
+	
 	const itemSize: UDim2 = new UDim2(
 		new UDim(xItemScale,xItemOffset),
 		new UDim(yItemScale,yItemOffset)
@@ -130,7 +131,7 @@ const story = CreateReactStory({
 				<SelectableItem
 					id={"btn_B"}
 					btnType='TextButton'
-					btnSize={UDim2.fromScale(0.4,0.4)}
+					size={UDim2.fromScale(0.4,0.4)}
 				/>
 				<SelectableItem
 					id={"btn_C"}
