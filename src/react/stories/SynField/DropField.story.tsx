@@ -14,6 +14,25 @@ const controls = {
 		LabelContent: String("Label"),
 	},1),
 
+	FlexGrow: ControlGroup({
+		Label: Number(
+			65, // default
+			0, // min
+			100, // max
+			1, // step
+			true, // dragger
+			0.7 // sens
+		),
+		Field: Number(
+			35, // default
+			0, // min
+			100, // max
+			1, // step
+			true, // dragger
+			0.7 // sens
+		),
+	},2),
+
 	FieldSizeX: ControlGroup({
 		Scale: Number(
 			0, // default
@@ -31,7 +50,7 @@ const controls = {
 			true, // dragger
 			0.7 // sens
 		)
-	},2),
+	},3),
 	FieldSizeY: ControlGroup({
 		Scale: Number(
 			0, // default
@@ -49,7 +68,7 @@ const controls = {
 			true, // dragger
 			0.7 // sens
 		)
-	},3)
+	},4)
 };
 
 const story = CreateReactStory({
@@ -75,6 +94,8 @@ const story = CreateReactStory({
 				layoutPos={selectedLayoutPosVariant}
 				size={new UDim2(fieldSizeX.Scale,fieldSizeX.Offset,fieldSizeY.Scale,fieldSizeY.Offset)}
 				labelContent={content.LabelContent}
+				labelGrow={props.controls.FlexGrow.Label}
+				fieldGrow={props.controls.FlexGrow.Field}
 			></SynField>
 		</StoryWrapper>
 	)
